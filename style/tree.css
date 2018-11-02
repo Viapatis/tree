@@ -1,0 +1,82 @@
+.tree-root{
+    width:auto;
+    overflow: auto;
+    height:400px;
+    margin: 2px 2px 2px 2px;
+}
+.tree-elem{
+    margin: 2px 0 2px 2px;
+}
+.sub-elems-list{
+    border-left: 1px solid #B0B0B0;
+    margin: 2px 0 0 0;
+}
+.sub-elems-list {
+    list-style-type: none;
+}
+.elem-body{
+    border: 2px solid #B0B0B0;
+    border-left:1px solid #B0B0B0;
+    border-radius: 4px 4px 4px 0;
+
+
+    text-align: left;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: bold;
+    color: #808080;
+}
+.elem-checkbox{
+    display: none;
+}
+.elem-checkbox + label .spanbox::before{
+    content: "\00A0";
+    display: inline-block;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #B0B0B0;
+    border-radius: 2px;
+    margin:3px 16px 3px 3px;
+    vertical-align: baseline;
+
+    text-align: center;
+    color: #808080;
+    font-size: 16px;
+}
+
+.elem-checkbox:checked + label .spanbox::before{
+    content: "\2713" ;
+ }
+.elem-checkbox:disabled + label .spanbox::before{
+    background-color: #e6e6e6;
+}
+.elem-checkbox:hover + label .spanbox::before {
+    border: 1px solid black;
+}
+
+.hide-subtree{
+    display: none;
+}
+.hide-subtree + label .hide-subtree-label::before{
+    content: "\2B9D";
+    display: inline-block;
+    box-sizing: border-box;
+    width: 15px;
+    height: 20px;
+    border-radius: 2px;
+    margin:3px 0px 3px 0px;
+    vertical-align: baseline;
+
+    text-align: center;
+    color: #808080;
+    font-size: 16px;
+}
+
+.hide-subtree:checked + label .hide-subtree-label::before{
+    content: "\2B9F" ;
+}
+.hide-subtree:hover + label .hide-subtree-label::before {
+    color:black;
+}
