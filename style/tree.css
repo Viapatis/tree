@@ -18,6 +18,7 @@
     border: 2px solid #B0B0B0;
     border-left:1px solid #B0B0B0;
     border-radius: 4px 4px 4px 0;
+    background-color: #d7cdc4;
 
 
     text-align: left;
@@ -25,24 +26,26 @@
     font-size: 14px;
     line-height: 16px;
     font-weight: bold;
-    color: #808080;
+    color: #395036
+;
 }
 .elem-checkbox{
     display: none;
 }
 .elem-checkbox + label .spanbox::before{
+    background-color: #fff0bd;
     content: "\00A0";
     display: inline-block;
     box-sizing: border-box;
     width: 20px;
     height: 20px;
-    border: 1px solid #B0B0B0;
+    border: 1px solid #ba9b00;
     border-radius: 2px;
     margin:3px 16px 3px 3px;
     vertical-align: baseline;
 
     text-align: center;
-    color: #808080;
+    color: #395036;
     font-size: 16px;
 }
 
@@ -53,7 +56,7 @@
     background-color: #e6e6e6;
 }
 .elem-checkbox:hover + label .spanbox::before {
-    border: 1px solid black;
+    border: 1px solid #3f9384;
 }
 
 .hide-subtree{
@@ -70,7 +73,7 @@
     vertical-align: baseline;
 
     text-align: center;
-    color: #808080;
+    color: #ba9b00;
     font-size: 16px;
 }
 
@@ -78,5 +81,5 @@
     content: "\2B9F" ;
 }
 .hide-subtree:hover + label .hide-subtree-label::before {
-    color:black;
+    color:#3f9384;
 }
