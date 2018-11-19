@@ -8,9 +8,13 @@ define(['./tree'],function ({Tree}) {
         ]);
     const root=document.getElementsByClassName('root')[0];
     const tree= new Tree(root);
+    const tree1=new Tree(root);
     tree.data=data;
+    tree1.data=data;
     tree.renderTree();
+    tree1.renderTree();
     tree.idCheckedList="1,2,3";
+    tree.idCheckedList="3";
     const idList=tree.idCheckedList;
     console.log(idList);
 });

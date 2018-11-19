@@ -1,13 +1,15 @@
 define(['./privateTree'],function ({PrivateTree}) {
+    let count=0;
     return {
         Tree:class {
             constructor(elem){
                 this.elem= elem;
+                this.count=++count;
             }
 
             set data(inputData){
                 const dataArr=JSON.parse(inputData);
-                this.treeElements=PrivateTree.createTreeElements(dataArr);
+                this.treeElements=PrivateTree.createTreeElements(dataArr,this.count);
                 this.treeRoot=document.createElement('div');
                 this.treeRoot.className='tree-root';
                 PrivateTree.createTree(this.treeElements,null).forEach( (treeElement)=>{

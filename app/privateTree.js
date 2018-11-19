@@ -16,22 +16,22 @@ define(['lodash','./templates'],function (_,{templateElement}) {
                 break;
         }
     }
-    function onChangeCheckbox(event) {
+    let onChangeCheckbox=(event)=>{
         const checkbox=event.target;
         changeSelectedElements(checkbox.parentElement.parentElement,checkbox.checked);
-    }
-    function changeSelectedElements(elem,checked){
+    };
+    let changeSelectedElements=(elem,checked)=>{
         const treeElements=elem.getElementsByClassName('tree-elem');
         _.forEach(treeElements,(treeElement)=>{
             const checkboxStatus=checked ? 'disabled':'enabled';
             editSelectionElement(treeElement,checkboxStatus)
         });
-    }
-    function onChangeHide(event) {
+    };
+    let onChangeHide=(event)=>{
         const checkbox=event.target;
         const subElems=checkbox.parentElement.parentElement.getElementsByClassName('sub-elems-list')[0];
         subElems.hidden=!subElems.hidden;
-    }
+    };
 
     return {
         PrivateTree:class {
@@ -77,9 +77,16 @@ define(['lodash','./templates'],function (_,{templateElement}) {
                 }
                 return allChildrenId;
             }
+            static unselectAll(treeElements){
+                treeElements.forEach((treeElement)=>{
+                    editSelectionElement(treeElement.html, "enabled");
+                    }
+                )
+            }
 
             static selectElementsFromList(treeElements, idList) {
                 let checkedList=idList;
+                this.unselectAll(treeElements);
                 treeElements.forEach((treeElement, i, treeElements) => {
                     const {id, html, childrenId} = treeElement;
                     const checked = (checkedList.find((index) => id === index) !== undefined);
@@ -93,15 +100,16 @@ define(['lodash','./templates'],function (_,{templateElement}) {
                 });
             }
 
-            static createTreeElements(dataArr) {
-                return dataArr.map((item,key) => {
+            static createTreeElements(dataArr,count) {
+                return dataArr.map((item,i) => {
                     const {id, title, parent} = {...item};
                     const treeElementHtml = document.createElement('div');
                     treeElementHtml.className = "tree-elem";
                     treeElementHtml.innerHTML = _.template(templateElement)({
                         title: title,
-                        key:key
+                        key:count+""+i
                     });
+                    console.log(performance.now());
                     const treeElement = {
                         id: id,
                         html: treeElementHtml,
@@ -109,7 +117,7 @@ define(['lodash','./templates'],function (_,{templateElement}) {
                         childrenId: []
                     };
                     treeElement.html.getElementsByClassName('elem-checkbox')[0].onchange = onChangeCheckbox;
-                    treeElement.html.getElementsByClassName('hide-subtree')[0].onchange =onChangeHide;
+                    treeElement.html.getElementsByClassName('hide-subtree')[0].onchange = onChangeHide;
                     return treeElement;
                 });
             }
